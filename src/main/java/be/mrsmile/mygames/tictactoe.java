@@ -27,6 +27,7 @@ public class tictactoe {
 
         int[] tictactoe = new int[9];
         int win = 0;
+        boolean end = false;
         int choice = 0;
 
         showTictactoe(tictactoe, win);
@@ -42,17 +43,31 @@ public class tictactoe {
             win = checkWin(tictactoe);
             showTictactoe(tictactoe, win);
             currentPlayer = 1 - currentPlayer;
+            if(checkEnd(tictactoe) && win == 0) {
+                return 2;
+            }
         }
 
         return 1 - currentPlayer;
     }
 
+    public static boolean checkEnd(int[] tictactoe) {
+        boolean result = true;
+        for (int i=0;i<tictactoe.length;i++) {
+            if(tictactoe[i]==0){
+                result = false;
+            }
+        }
+        return result;
+    }
+    
     /**
      * Displays the tictactoe boards
      * @param tictactoe Arrays with value of each case
      * @param win The way the winner wins, to show the line of the three same symbols
      */
     public static void showTictactoe(int[] tictactoe, int win) {
+        System.out.println("");
         for (int i = 0; i < 9; i++) {
             if (win == 123 && i < 3) {
                 System.out.print("--|--");

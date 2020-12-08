@@ -50,6 +50,13 @@ public class Main {
                         addPlayers(listPlayers);
                     }
                         winner = tictactoe.start(listPlayers);
+                        if(winner > 1) {
+                            System.out.println("");
+                            System.out.println("Match nul !");
+                            util.pressEnter();
+                            System.out.println("");
+                            break;
+                        }
                         System.out.println("");
                         listScore[winner] += 5;
                         System.out.println("Bravo "+listPlayers[winner]+" ! Vous avez gagne 5 points !");
